@@ -37,8 +37,8 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'What kind of License?',
-        choices: ['MIT', 'Apache', 'GPL'],
-        default: 'MIT',
+        choices: ['None', 'MIT', 'Apache', 'GPL'],
+        default: 'None',
     },
     {
         type: 'input',
@@ -64,7 +64,7 @@ function writeToFile(fileName, data) {
 
 function init() {
     inquirer.prompt(questions)
-    .then(answers => generateMarkdown(answers))
+    .then(answers => writeToFile('Schizo.md', generateMarkdown(answers)))
 }
 
 init();

@@ -1,21 +1,46 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
-
-// TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  console.log(data)
-  return `# ${data.title}
-
-`;
+function renderLicense(license) {
+  switch(license) {
+    case 'None':
+      license = ''
+      break
+    case 'MIT':
+      license = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) This software is covered under the MIT license <https://opensource.org/licenses/MIT>'
+      break
+    case 'Apache':
+      license = '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) This software is covered under the Apache license. <https://www.apache.org/licenses/LICENSE-2.0>'
+      break
+    case 'GPL':
+      license = '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) This software is covered under the GPL license. <https://www.gnu.org/licenses/gpl-3.0.en.html>'
+      break
+  }
+  return license
 }
 
-module.exports = generateMarkdown;
+function generateMarkdown(data) {
+  return `# ${ data.title }
+  ***
+  ### License
+  ${ renderLicense(data.license) }
+ 
+  ### Description
+  ${ data.description }
+
+  ### Installation Instructions
+  ${ data.instructions }
+
+  ### Usage Information
+  ${ data.usage }
+
+  ### Contributor Guidelines
+  ${ data.contribute }
+
+  ### Test Instructions
+  ${ data.test }
+ 
+  ### Questions? I Have **Answers**
+  <${ data.email }>
+  <https://www.github.com/${ data.github }>
+  `
+}
+
+module.exports = generateMarkdown
