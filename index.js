@@ -57,14 +57,14 @@ function writeToFile(fileName, data) {
         if (error) {
             console.log(error)
         } else {
-            console.log('We did it, bro! We made a fuckin\' README!')
+            console.log('We did it, bro! We made you a README!')
         }
     })
 }
 
 function init() {
     inquirer.prompt(questions)
-    .then(answers => writeToFile('Schizo.md', generateMarkdown(answers)))
+    .then(answers => writeToFile('README.md', generateMarkdown(answers)))
 }
 
 init();
